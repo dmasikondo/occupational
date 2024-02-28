@@ -1,66 +1,116 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## About Occupation Project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This is a Laravel Livewire based project to manage and track occupation safety issues at construction sites, with the following modules
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
+- User Authentication
+- User Profile Management
+- Priviledged and Restricted Access to authenticated users
+- Articles (posts) Management (CRUD)
+- Image Handling
+- Searching Functionality based on Different Creteria
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## User functions
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Project Admin
+✅creates a project with
+ - project title
+- project description
+- project start date
+- project end date
+✅Adds contractor(s) to the project with
+- contractor's name
+- contact address
+- contact phone no.s
+- website (optional)
+- email (optional)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+✅Adds safety officer for each Contractor
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+✅Creates details to any remedial work added to a project (e.g. Briefing of safety officer who stated that his role was not properly stated to him) stating
+- date
+- challenge addressed (to be selected from a list of outstanding risks auto generated from safety officers' responses to risk compliance)
 
-## Laravel Sponsors
+❇️ Project Admin can
+✅ view all projects and the following associated details
+- project's contractors, safety officers and other workers
+- Nature of Job (work at height, lifting operations etc)
+- safety meetings for each project (stating date of meeting, venue of meeting, who was present, risks not complied to for each nature of job, % compliance)
+- project images
+✅send messages to safety officers on any information requiring further probing
+✅can view
+- reported accidents and associated project details
+- near misses and associated project details
+- summary reports on accidents and near misses for selected periods
+- view projects with outstanding risks
+✅Receive notifications on
+- uploaded safety meetings
+- reported accidents
+- reported near misses
+- safety officers who activated their accounts
+- safety officers who added workers to the system
+- contractor who does not have right tools for the job
+- contractor who does not have protective equipment for the job
+- safety officer whose role was not explained to him
+- safety officer to whom the procedure and work permit was not explained to him
+-safety officer who stated  that he cannot  perform his role
+- replies from safety officer on any enquiries
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+## Safety Officer
+✅creates safety meeting 'minutes' for an associated project with
+- date of meeting
+- venue of meeting
+- attendees (marked present from the list of the contractor's workers)
+- Nature of Job(s): (work at height, lifting operations etc)
+- site images
+- answer yes/no auto generated risk assessment questions for each nature of job
+- the system then highlights to the project admin risks not complied to from these responses
+- system calculates compliance % from these responses
+✅State if he has the right tools for the job
+✅state if he has protective equipment for the job
+✅state if his role was explained to him
+✅state if the procedure and work permit was explained to him
+✅state if he can perform his role
+✅Add workers for a particular project as follows:
+- first name
+- surname
+- national id number
+- sex
+- contact home address
+- contact email (optional)
+- contact cellphone
+- job title
+(NB: This information will be used amongst other things to mark the attendance register of those present in the safety meetings)
+✅Report accidents with the following details:
+- date of accident
+- approximate time
+- location
+- who was involved
+- possible causes of the accident
+- number of people injured
+- names of people injured (optional)
+- number of deaths
+- names of people who died (optional)
+- damage to machinery, equipment and structures
+- action that was taken
+- outstanding action to be taken
+✅Report near misses with the following details:
+- date of near miss
+- approximate time
+- location
+- who was involved
+- possible causes
+- action that was taken
+- outstanding action to be taken
+✅Respond to messages from project admin on any areas needing clarification
+✅Safety officer can view
+- projects that his / her company is contracted to and associated risks, compliance levels
+- can edit his / her safety meeting minutes before finally sending
+- can view and edit workers of the contractor that he uploaded for
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+✅Safety officer can receive notifications on 
+- Projects that his company (contractor) has been assigned to
+- messages from the project admin requiring some clarifications
