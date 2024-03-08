@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/login',[AuthController::class, 'authenticate'])->name('login');
+//Route::get('/login/inactive',[AuthController::class, 'inactive'])->name('loginInactiveForm');
+Route::get('activate-account',[AuthController::class, 'activateAccount'])->name('loginActivationForm');
+Route::post('login-update',[AuthController::class, 'update']);
