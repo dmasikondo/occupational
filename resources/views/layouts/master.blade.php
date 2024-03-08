@@ -19,19 +19,20 @@
           <aside>
             <ul class="mt-2">
               <li>
-                <a class="flex items-center px-4 py-2 text-gray-700 bg-gray-100 rounded-md " href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-
+                <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200 rounded-md bg-gray-50 @if(request()->routeIs('dashboard')) bg-gray-50 border-indigo-500 border-l-4 @endif" href="/dashboard" >                  
+                  <x-icon name="home" class="w-6 h-6"/>
                   <span class="mx-4 font-medium">Dashboard</span>
                 </a>
               </li>
+              <li>
+                <a class="flex items-center px-4 py-2 mt-5 text-gray-700 hover:bg-gray-200 rounded-md bg-gray-50" href="/#projects">                  
+                  <x-icon name="tag" class="w-6 h-6"/>
+                  <span class="mx-4 font-medium">Projects</span>
+                </a>
+              </li>              
 
               <li>
-                <a class="flex items-center px-4 py-2 mt-5 text-gray-600 rounded-md hover:bg-gray-200" href="#">
+                <a class="flex items-center px-4 py-2 mt-5 text-gray-600 rounded-md hover:bg-gray-200 bg-gray-50" href="#">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -43,6 +44,7 @@
                   <span class="mx-4 font-medium">Settings</span>
                 </a>
               </li>
+
             </ul>
 
           </aside>
@@ -54,6 +56,7 @@
           @yield('content')
         </div>
       </div>
-  </body>
+@livewireScripts
+    </body>
 
 </html>

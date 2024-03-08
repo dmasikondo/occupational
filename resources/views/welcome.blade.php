@@ -15,9 +15,7 @@
                   Occupational
               </div>
               <div class="">
-                @if(session()->has('message'))
-                    <p class="py-8">{{session('message')}}</p>
-                @endif
+                <x-forms.success-message/>
               </div>
                 @if(session()->has('errors'))
                 <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">

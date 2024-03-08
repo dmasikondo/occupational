@@ -56,5 +56,15 @@ class User extends Authenticatable
         );
     }
 
+    /**
+     * Get the user's first name.
+     */
+    protected function surname(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => ucfirst($value),
+        );
+    }
+
 
 }

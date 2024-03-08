@@ -23,9 +23,8 @@ class AuthController extends Controller
         ]);
 
         if(auth()->attempt($validated)){
-
+            $token = app('auth.password.broker')->createToken(auth()->user());
             if(auth()->user()->must_reset){
-                $token = app('auth.password.broker')->createToken(auth()->user());
                 $first_name= auth()->user()->first_name;
                 $email = auth()->user()->email;
                 //email reset link and logout the user
@@ -36,7 +35,8 @@ class AuthController extends Controller
                 return redirect()->back()->with('message',"An account activation link was emailed to $email ");
             }
             else{
-                return 'account active';
+                //request()->session()->regenerate(); 
+                return redirect()->intended('dashboard'); 
             }
         }
         else{
@@ -97,6 +97,20 @@ class AuthController extends Controller
         }
 
 
+    }
+
+    public function dashboard()
+    {
+        //auth()->logout();
+        return view('dashboard');
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();        
+        return redirect()->route('login')->with('message',"You were succefully logged out");
     }
 
 
