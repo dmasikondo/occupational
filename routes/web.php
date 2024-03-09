@@ -17,7 +17,7 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('login');
+})->middleware(['guest'])->name('login');
 
 Route::post('/login',[AuthController::class, 'authenticate']);
 //Route::get('/login/inactive',[AuthController::class, 'inactive'])->name('loginInactiveForm');
