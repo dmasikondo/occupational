@@ -45,9 +45,33 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
 
     /**
-     * Get the user's first name.
+     * Assign user a role
+     */
+
+    public function assignRole($role)
+    {
+       // $check_if_role_exists = Role::where('name',$role)->get();
+
+
+        return $this->roles()->save(Role::firstOrCreate(['name' =>$role]));
+    }
+
+    /**
+      * Check if the user has role of
+    */
+    public function hasRole($role)
+    {
+        return  (bool) $this->roles()->where('name',$role)->count();
+    }
+    /**
+     * Get the user's first name capitalised first letter.
      */
     protected function firstName(): Attribute
     {
@@ -57,7 +81,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the user's first name.
+     * Get the user's surname capitalised first letter.
      */
     protected function surname(): Attribute
     {

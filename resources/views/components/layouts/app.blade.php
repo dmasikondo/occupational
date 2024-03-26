@@ -5,15 +5,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Occupational::@yield('title') </title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Occupation::{{ $title ?? 'Page Title' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
+    {{-- @props(['main','aside']) --}}
+
   </head>
 
   <body>
+    <div>
     @include('includes.top-nav')
     <div class="pt-12 lg:flex">
-      <div class="flex flex-col w-full px-4 py-8 overflow-y-auto border-b lg:border-r lg:h-screen lg:w-64">
+      <div class="w-full px-4 py-8 overflow-y-auto border-b lg:flex lg:flex-col lg:border-r lg:h-screen lg:w-64">
 
 
         <div class="flex flex-col justify-between mt-10">
@@ -26,8 +30,8 @@
                 </a>
               </li>
               <li>
-                <a class="flex items-center px-4 py-2 mt-5 text-gray-700 hover:bg-gray-200 rounded-md bg-gray-50 @if(request()->routeIs('create-project')) bg-gray-50 border-indigo-500 border-l-4 @endif" href="/projects/create">
-                  <x-icon name="tag" class="w-6 h-6"/>
+                <a class="flex items-center px-4 py-2 mt-5 text-gray-700 hover:bg-gray-200 rounded-md bg-gray-50 @if(request()->routeIs('create-project')||request()->routeIs('show-project')) bg-gray-50 border-indigo-500 border-l-4 @endif" href="/projects/create">
+                  <x-icon name="building-office-2" class="w-6 h-6" stroke-width="2"/>
                   <span class="mx-4 font-medium">Projects</span>
                 </a>
               </li>
@@ -51,14 +55,25 @@
           </aside>
 
         </div>
+
       </div>
-      <div class="w-full h-full p-4 m-8 overflow-y-auto">
-        <div class="p-4 mr-8 border-4 border-dotted lg:p-10">
-          @yield('content')
+      <div class="w-full h-full p-4 m-4 overflow-y-auto">
+        <div class="p-4 mr-4 border-4 border-dotted lg:p-10 lg:pr-4">
+            <div>
+                {{$slot}}
+                {{-- <div class="w-full lg:w-9/12">
+                    {{$main}}
+                </div>
+                <div class="w-full p-4 ml-2 lg:w-3/12 bg-gradient-to-r from-purple-50 to-indigo-50 shadow-slate-50">
+                    {{$aside}}
+                </div> --}}
+            </div>
         </div>
       </div>
     </div>
 @livewireScripts
+    </div>
     </body>
 
 </html>
+

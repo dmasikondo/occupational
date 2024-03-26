@@ -45,7 +45,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('role_id');
             $table->timestamps();
-        });        
+        });
            //insert first user
         DB::table('users')->insert([
             [
@@ -57,11 +57,11 @@ return new class extends Migration
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
-            
+
         ]);
 
         //make first user an admin user
-        $user = DB::table('users')->where('email', 'britneytmak@gmail.com')->first();  
+        $user = DB::table('users')->where('email', 'britneytmak@gmail.com')->first();
         $admin_role = DB::table('roles')->where('name', 'admin')->first();
         DB::table('role_user')->insert([
             [
@@ -70,7 +70,7 @@ return new class extends Migration
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
-            
+
         ]);
 
     }
@@ -83,7 +83,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('role_user');
-        Schema::dropIfExists('roles');         
+        Schema::dropIfExists('roles');
         Schema::dropIfExists('users');
     }
 };

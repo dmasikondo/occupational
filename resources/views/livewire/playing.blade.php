@@ -1,3 +1,0 @@
-<div>
-    Playing around..
-</div>
