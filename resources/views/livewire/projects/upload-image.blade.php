@@ -2,9 +2,9 @@
   <x-modal wire:model="show">
         <!-- content -->
 
-        {{-- <x-slot name="title">
+        <x-slot name="title">
           Add Image
-        </x-slot> --}}
+        </x-slot>
         <div class="mt-2">
             <div class="my-8">
                 <x-forms.error-message>

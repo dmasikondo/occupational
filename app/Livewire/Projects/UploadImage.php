@@ -19,7 +19,7 @@ class UploadImage extends Modal
 {
     use WithFileUploads;
 
-    #[Validate('required|min:3')]
+    #[Rule('required|max:200')]
     public $title ='';
 
     #[Rule('required|sometimes|image:1024|mimes:jpeg,png,jpg,gif')]
@@ -58,8 +58,6 @@ class UploadImage extends Modal
             'files',
         ])->firstOrFail();
         $this->is_profile = $this->setProfileStatusForFirstPic($project);
-        //dd("The state of relationship is ".$project->has('files')->count());
-        //dd(" The profile status is ".$this->is_profile);
 
         $image = $project->files()->create([
             'title' => $this->title,
@@ -67,29 +65,34 @@ class UploadImage extends Modal
             'user_id' => auth()->user()->id,
             'url'=>$this->image_name.'.jpeg',
         ]);
-        if($this->is_profile =true){
+        if($this->is_profile == true){
             File::whereNot('id', $image->id)->update(['is_profile'=>false]);
         }
 
         $this->dispatch('image-updated');
+        $this->dispatch('project-created');
         session()->flash('message',"The image file was successfully uploaded");
         $this->reset();
     }
 
     private function setProfileStatusForFirstPic($project)
     {
-        //dd($project[0]);
-        if(!is_null($project->files->count())){
-           // dd('dhakwas');
-             return $this->is_profile = true;
+        if($project->files->count()>0){
+           // dd('is profile'.$this->is_profile);
+             return $this->is_profile;
         }
-        //dd('chibabe');
-        return $this->is_profile =false;
+        else{
+            return $this->is_profile =true;
+        }
+
+
+
     }
 
 
     public function render()
     {
+
         return view('livewire.projects.upload-image');
     }
 }

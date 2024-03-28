@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Livewire\Projects\CreateProject;
 use App\Livewire\Projects\ShowProject;
+use App\Livewire\Projects\ProjectIndex;
+
 
 use GuzzleHttp\Middleware;
 
@@ -32,5 +34,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('logout',[AuthController::class, 'logout'])->name('logout');
     Route::get('/projects/create', CreateProject::class)->name('create-project');
     Route::get('/projects/{slug}', ShowProject::class)->name('show-project');
+    Route::get('/projects', ProjectIndex::class)->name('show-projects');
+
 });
 

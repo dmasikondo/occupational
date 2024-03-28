@@ -2,7 +2,14 @@
    @foreach ($projects as $project)
     <div wire:key="project-{{$project->id}}" class="flex border-b border-solid border-grey-light">
         <div class="py-2">
-            <a href="#"><img src="{{asset('storage/projects/'.$project->project_image)}}" alt="{{$project->project_title}} image" class="rounded-full size-12" onerror="this.onerror=null;this.src='/storage/images/logo.jpeg'"></a>
+            <a href="#"><img src="
+                @foreach ($project->files as $file)
+                    @if($file->is_profile)
+                        {{asset('storage/projects/'.$file['url'])}}"
+                    @endif
+                @endforeach
+
+                alt="{{$project->project_title}} image" class="rounded-full size-12" onerror="this.onerror=null;this.src='/storage/images/logo.jpeg'"></a>
         </div>
         <div class="w-full py-2 pl-2">
             <div class="flex justify-between mb-1 text-sm">

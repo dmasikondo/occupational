@@ -1,4 +1,5 @@
-<div class="lg:flex">
+
+    <div class="lg:flex">
     <div id="main-content" class="w-full lg:w-9/12">
         <div class="flex items-center justify-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
             <img class="w-8 h-8 mr-2" src="{{url('/storage/images/logo.jpeg')}}" alt="Occupational Logo">

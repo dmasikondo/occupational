@@ -30,7 +30,7 @@
                 </a>
               </li>
               <li>
-                <a class="flex items-center px-4 py-2 mt-5 text-gray-700 hover:bg-gray-200 rounded-md bg-gray-50 @if(request()->routeIs('create-project')||request()->routeIs('show-project')) bg-gray-50 border-indigo-500 border-l-4 @endif" href="/projects/create">
+                <a class="flex items-center px-4 py-2 mt-5 text-gray-700 hover:bg-gray-200 rounded-md bg-gray-50 @if(request()->routeIs('create-project')||request()->routeIs('show-project')) bg-gray-50 border-indigo-500 border-l-4 @endif" href="/projects">
                   <x-icon name="building-office-2" class="w-6 h-6" stroke-width="2"/>
                   <span class="mx-4 font-medium">Projects</span>
                 </a>

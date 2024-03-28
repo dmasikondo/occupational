@@ -24,7 +24,7 @@
 
             <!-- Title / Close-->
         <div class="flex items-center justify-between">
-            <h5 class="mb-3 mr-3 text-black border-b-4 border-yellow-500 max-w-none">{{--{{$title}} --}}
+            <h5 class="mb-3 mr-3 text-black border-b-4 border-yellow-500 max-w-none">{{$title}}
             </h5>
 
             <button type="button" class="z-50 text-red-600 cursor-pointer" @click="show = false">
